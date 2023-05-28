@@ -3,6 +3,7 @@
 # Request you to evaluate both the model. For Buiding the Model. I have attached two files. 
    1) First one is important one. I used pretrined Mobilenet v2 model. -> attached on ipynb 
    2) Second one is building sequential Model with CNN layer:
+        Model Drive Link: https://drive.google.com/drive/folders/1l0GY_Fyd1gRCfxqq7ADE_F2St-9CfTIL?usp=sharing
         ```
         import pandas as pd
         import numpy as np
@@ -25,7 +26,6 @@
         df.head()
         
         df = df.dropna()
-        # df['gender'] = df['gender'].astype('category')
         df.dtypes
         
         from sklearn.preprocessing import LabelEncoder
@@ -106,6 +106,41 @@
         model.compile(optimizer='adam', loss=losses, metrics=['accuracy'])
         # Train the model
         model.fit(train_generator, validation_data=test_generator, epochs=10)
+         
+        from tensorflow.keras.models import load_model
+        from tensorflow.keras.preprocessing import image
+
+        # Path to the saved model file
+        model_path = "drive/fashion_model.h5"  # Replace with the actual model path
+
+        # Load the model
+        model = load_model(model_path)
+
+         # Path to the fashion product image you want to predict
+         image_path = "external_image_path.jpg"  # Replace with the actual image path
+
+         # Load the image and preprocess it
+         img = image.load_img(image_path, target_size=image_size)
+         img_array = image.img_to_array(img)
+         img_array = img_array / 255.0  # Normalize the image
+
+         # Expand dimensions to create a batch of size 1
+         img_array = np.expand_dims(img_array, axis=0)
+
+         # Make predictions
+         predictions = model.predict(img_array)
+
+         # Convert the predictions to labels
+         baseColour_pred = label_encoder.inverse_transform(np.argmax(predictions[0]))
+         articleType_pred = label_encoder.inverse_transform(np.argmax(predictions[1]))
+         season_pred = label_encoder.inverse_transform(np.argmax(predictions[2]))
+         gender_pred = label_encoder.inverse_transform(np.argmax(predictions[3]))
+
+         # Print the predicted labels
+         print("Predicted base colour:", baseColour_pred)
+         print("Predicted article type:", articleType_pred)
+         print("Predicted season:", season_pred)
+         print("Predicted gender:", gender_pred)
 
         ```
 ## Encountered many errors and issues while building these model. One common error is with categorical label mismatch. Like Corrupted imagese, in valid files, etc
