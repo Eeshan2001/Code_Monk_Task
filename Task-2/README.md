@@ -3,7 +3,7 @@
 # Request you to evaluate both the model. For Buiding the Model. I have attached two files. 
     1> First one is building sequential Model with CNN layer
     2> Second one is important one. I used pretrined Mobilenet v2 model. 
-## Encountered many errors and issues while building these model. One common error is with categorical label mismatch.
+## Encountered many errors and issues while building these model. One common error is with categorical label mismatch. Like Corrupted imagese, in valid files, etc
 To run the combined file that includes the Flask API and Streamlit GUI, follow these steps:
 
 1) Make sure you have the necessary dependencies installed. You can install the required dependencies by running the following command in your terminal or command prompt:
