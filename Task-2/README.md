@@ -3,6 +3,8 @@
 # Request you to evaluate both the model. For Buiding the Model. I have attached two files. 
    1) First one is important one. I used pretrined Mobilenet v2 model. -> attached on ipynb 
    2) Second one is building sequential Model with CNN layer:
+       This is demo model I made for test purpose. not actual Model. 
+       Actual model encountered some issue. 
         Model Drive Link: https://drive.google.com/drive/folders/1l0GY_Fyd1gRCfxqq7ADE_F2St-9CfTIL?usp=sharing
         ```
         import pandas as pd
