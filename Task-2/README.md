@@ -132,17 +132,18 @@
          # Make predictions
          predictions = model.predict(img_array)
 
-         # Convert the predictions to labels
-         baseColour_pred = label_encoder.inverse_transform(np.argmax(predictions[0]))
-         articleType_pred = label_encoder.inverse_transform(np.argmax(predictions[1]))
-         season_pred = label_encoder.inverse_transform(np.argmax(predictions[2]))
-         gender_pred = label_encoder.inverse_transform(np.argmax(predictions[3]))
+         # Retrieve the predicted labels
+         baseColour_pred = label_encoder.inverse_transform([np.argmax(predictions[0][0])])[0]
+         articleType_pred = label_encoder.inverse_transform([np.argmax(predictions[0][1])])[0]
+         season_pred = label_encoder.inverse_transform([np.argmax(predictions[0][2])])[0]
+         gender_pred = label_encoder.inverse_transform([np.argmax(predictions[0][3])])[0]
 
          # Print the predicted labels
-         print("Predicted base colour:", baseColour_pred)
-         print("Predicted article type:", articleType_pred)
-         print("Predicted season:", season_pred)
-         print("Predicted gender:", gender_pred)
+         print('Predicted Base Colour:', baseColour_pred)
+         print('Predicted Article Type:', articleType_pred)
+         print('Predicted Season:', season_pred)
+         print('Predicted Gender:', gender_pred)
+
 
         ```
 ## Encountered many errors and issues while building these model. One common error is with categorical label mismatch. Like Corrupted imagese, in valid files, etc
