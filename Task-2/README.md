@@ -145,6 +145,7 @@
          print('Predicted Gender:', gender_pred)
 
 
+
         ```
 ## Encountered many errors and issues while building these model. One common error is with categorical label mismatch. Like Corrupted imagese, in valid files, etc
 To run the combined file that includes the Flask API and Streamlit GUI, follow these steps:
